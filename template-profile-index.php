@@ -26,7 +26,7 @@ $paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
 			),
 
 			)); 
-			set_transient( 'research_profile_index_query_' . $paged, $research_profile_index_query, 2592000 );
+			set_transient( 'research_profile_index_query_' . $parent_title . '_' . $paged, $research_profile_index_query, 2592000 );
 	} 	
 	?>
 
