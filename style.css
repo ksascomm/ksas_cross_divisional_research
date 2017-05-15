@@ -1,0 +1,152 @@
+/******************************************************************
+ Theme Name:   Cross Divisional: Research
+ Theme URI: https://github.com/ksascomm/ksas_cross_divisional_research
+ Description:  Research Awards/Opps version of KSAS X-Div Theme. SearchWP should be enabled.
+ Author:       Tim Gelles
+ Author URI:   http://krieger.jhu.edu
+ Template:     ksas_cross_divisional
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+******************************************************************/
+
+
+#mobile-nav {
+	background: inherit !important;
+}
+
+li.current_page_item > a {
+	font-weight: bold;
+}
+.evergreen {
+  background-size: cover !important;
+  height: 40vh;
+  margin-bottom: 2rem;
+  } 
+
+.evergreen .intro {
+    padding: 3rem;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+  .evergreen h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.5em;
+    letter-spacing: -0.025em;
+    font-weight: 300;
+    text-align: center; }
+  .evergreen h4 {
+    color: #fff;
+    line-height: 1.3;
+    font-weight: 200;
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 2rem; }
+ @media only screen and (min-width: 40.063em) {
+    .evergreen .tech-img {
+      height: 18rem;
+      width: 18rem; }
+    .evergreen h1 {
+      padding-top: 4.5rem;
+      text-align: left;
+      font-size: 2.5rem; }
+    .evergreen h4 {
+      text-align: left; } }
+
+      .text-shadow {
+    text-shadow: 2px 2px 2px #000;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.75);
+}
+
+.input-group>input {
+    margin-bottom: 0px;
+}
+
+h1.search-result {
+  font-size: 1.25rem !important;
+}
+
+.black {
+  color: #2C2C33;
+}
+
+#main a[href$= ".pdf"]:after,#main a[href$= ".doc"]:after,#main a[href$= ".docx"]:after,#main a[href$= ".xls"]:after,#main a[href$= ".xlsx"]:after,#main a[href$= ".ppt"]:after,#main a[href$= ".pptx"]:after{
+font-family: 'FontAwesome';
+color:#2C2C33;
+font-size: 1.5rem;
+padding-left:.4rem;       
+}
+#main a[href$= ".pdf"]:after{
+content: '\f1c1';
+}
+#main a[href$= ".doc"]:after,#main a[href$= ".docx"]:after{
+content: '\f1c2';
+}
+#main a[href$= ".xls"]:after,#main a[href$= ".xlsx"]:after{
+content: '\f1c3';
+}
+#main a[href$= ".ppt"]:after,#main a[href$= ".pptx"]:after{
+content: '\f1c4';
+}
+
+.widget_search h4 {
+  padding: 12px 15px 10px 0;
+}
+
+.caption {
+    margin: 2em auto;
+}
+
+.caption h3 {
+  font-size: 1.75rem;
+}
+
+ul#directory {
+margin-left: 0px;
+}
+
+li.person {
+  min-height: inherit;
+  padding-left: inherit;
+}
+
+.paged > .pagination {
+  display: flex
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .fullscreen-image-slider .orbit-caption {
+    padding: 0.3rem;
+}   
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) { 
+
+.fullscreen-image-slider .orbit-image {
+  width: 100%;
+  height: 45vh;
+}
+
+.fullscreen-image-slider .orbit-caption {
+   right: 5%;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+          transform: translateY(50%);
+  text-align: center;
+  color: #fefefe;
+  font-weight: bold;
+  width: 550px;
+  padding: 2rem 4rem;
+  font-size: 1.25rem;
+  background-color: rgba(44, 44, 51, 0.66);
+}
+}
+
+.fullscreen-image-slider .orbit-caption > h4 > a {
+  color: white;
+}
