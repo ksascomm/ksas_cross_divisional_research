@@ -13,15 +13,77 @@
 										
 					<header class="article-header">	
 						<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
-						<h5 class="black" itemprop="datePublished"><?php the_date(); ?></h5>
 				    </header> <!-- end article header -->
 									
 				    <section class="entry-content" itemprop="articleBody">
-						<p class="lead"><?php if( get_post_meta($post->ID, 'ecpt_pull_quote', true)) { echo get_post_meta($post->ID, 'ecpt_pull_quote', true); } ?></p>
-						<?php if ( has_post_thumbnail()) { ?> 
-							<?php the_post_thumbnail('full', array('class'	=> "floatleft", 'itemprop' => 'image')); ?>
-						<?php } ?>						
-						<?php the_content();?>
+						<p class="no-margin">
+						    <?php if ( get_post_meta($post->ID, 'ecpt_class_year', true) ) : ?>Year: <?php echo get_post_meta($post->ID, 'ecpt_class_year', true);?><?php endif;?>
+						    <?php 	//Get the Academic Department Names
+						    	$terms = get_the_terms( $post->ID, 'academicdepartment' );
+						    	    if ( $terms && ! is_wp_error( $terms ) ) : 
+						    	    	$dept_name_array = array();
+						    	    foreach ( $terms as $term ) {
+						    	        $dept_name_array[] = $term->name;
+						    	    }
+						    	    $dept_name = join( ", ", $dept_name_array ); ?>
+						    	    <br>
+						    	    Affiliations: 
+						    	<?php echo $dept_name; endif;?>&nbsp;
+						    	<?php //Get the Affiliation Names
+										$terms_2 = get_the_terms( $post->ID, 'affiliation' );
+										    if ( $terms_2 && ! is_wp_error( $terms_2 ) ) : 
+										    	$affil_name_array = array();
+										    foreach ( $terms_2 as $term_2 ) {
+										        $affil_name_array[] = $term_2->name;
+										    }
+										    $affil_name = join( ", ", $affil_name_array );
+										echo $affil_name; endif;?>
+							<br>Award: <?php $categories = get_the_category(); 
+								if ( ! empty( $categories ) ) {
+								    echo esc_html( $categories[0]->name );   
+								} ?>
+						</p>
+
+						<?php if ( get_post_meta($post->ID, 'ecpt_award_name', true) ) : ?>
+						    
+						    <h5 class="black"><?php echo get_post_meta($post->ID, 'ecpt_award_name', true); ?></h5>
+						
+						<?php endif; ?>	
+
+						<?php if ( has_post_thumbnail() ) { the_post_thumbnail('slider', array('class' => 'floatleft')); } ?>
+							
+							<h3>Project Description</h3>
+						
+						<?php the_content(); ?>						
+						
+						<?php if ( get_post_meta($post->ID, 'ecpt_article_list', true) ) : ?>
+						
+							<h5>Articles and Related Links</h5>
+						
+								<?php echo get_post_meta($post->ID, 'ecpt_article_list', true); ?>
+						
+						<?php endif; ?>						
+						
+
+						<?php if ( get_post_meta($post->ID, 'ecpt_video', true) || get_post_meta($post->ID, 'ecpt_research_pdf', true)) : ?>
+				
+							<h5>Multimedia</h5>
+							
+							<?php if ( get_post_meta($post->ID, 'ecpt_research_pdf', true) ) : ?>
+								<p>
+									<a href="<?php echo get_post_meta($post->ID, 'ecpt_research_pdf', true); ?>">Download research materials</a>
+								</p>
+							<?php endif; ?>
+							<?php if ( get_post_meta($post->ID, 'ecpt_video', true) ) : ?>
+								<p>
+									<a href="<?php echo get_post_meta($post->ID, 'ecpt_video', true); ?>">Watch research video</a>
+								</p>
+							<?php endif; ?>
+
+						<?php endif; ?>
+
+
+
 					</section> <!-- end article section -->
 																	
 				</article> <!-- end article -->
