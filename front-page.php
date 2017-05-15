@@ -5,7 +5,7 @@
 			if ( false === ( $slider_query = get_transient( 'slider_query' ) ) ) {
 				$slider_query = new WP_Query(array(
 					'post_type' => 'slider',
-					'posts_per_page' => '2',
+					'posts_per_page' => '-1',
 					'orderby' => 'menu_order', 
 					'order' => 'ASC'));
 				set_transient( 'slider_query', $slider_query, 2592000 );
