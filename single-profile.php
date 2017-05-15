@@ -17,28 +17,35 @@
 									
 				    <section class="entry-content" itemprop="articleBody">
 						<p class="no-margin">
-						    <?php if ( get_post_meta($post->ID, 'ecpt_class_year', true) ) : ?>Year: <?php echo get_post_meta($post->ID, 'ecpt_class_year', true);?><?php endif;?>
-						    <?php 	//Get the Academic Department Names
-						    	$terms = get_the_terms( $post->ID, 'academicdepartment' );
-						    	    if ( $terms && ! is_wp_error( $terms ) ) : 
-						    	    	$dept_name_array = array();
-						    	    foreach ( $terms as $term ) {
-						    	        $dept_name_array[] = $term->name;
-						    	    }
-						    	    $dept_name = join( ", ", $dept_name_array ); ?>
-						    	    <br>
-						    	    Affiliations: 
-						    	<?php echo $dept_name; endif;?>&nbsp;
-						    	<?php //Get the Affiliation Names
-										$terms_2 = get_the_terms( $post->ID, 'affiliation' );
-										    if ( $terms_2 && ! is_wp_error( $terms_2 ) ) : 
-										    	$affil_name_array = array();
-										    foreach ( $terms_2 as $term_2 ) {
-										        $affil_name_array[] = $term_2->name;
-										    }
-										    $affil_name = join( ", ", $affil_name_array );
-										echo $affil_name; endif;?>
-							<br>Award: <?php $categories = get_the_category(); 
+						    <?php if ( get_post_meta($post->ID, 'ecpt_class_year', true) ) : ?>
+						    	<strong>Year:</strong> <?php echo get_post_meta($post->ID, 'ecpt_class_year', true);?> <br>
+						    <?php endif;?>
+						
+						<?php if (has_term('','academicdepartment', $post->ID) == true || has_term('','affiliation', $post->ID) == true) { ?>
+							<strong>Affiliations:</strong>
+						<?php } ?>
+							<?php 	//Get the Academic Department Names
+							$terms = get_the_terms( $post->ID, 'academicdepartment' );
+							if ( $terms && ! is_wp_error( $terms ) ) :
+							$dept_name_array = array();
+							foreach ( $terms as $term ) {
+							$dept_name_array[] = $term->name;
+							}
+							$dept_name = join( ", ", $dept_name_array );
+							echo $dept_name; endif;
+							//Get the Affiliation Names
+							$terms_2 = get_the_terms( $post->ID, 'affiliation' );
+							if ( $terms_2 && ! is_wp_error( $terms_2 ) ) :
+							$affil_name_array = array();
+							foreach ( $terms_2 as $term_2 ) {
+							$affil_name_array[] = $term_2->name;
+							}
+							$affil_name = join( ", ", $affil_name_array );
+							if (has_term('','academicdepartment', $post->ID) == true) { echo ','; }
+							echo ' ' . $affil_name; ?>
+						
+						<?php endif;?>							
+							<br><strong>Award:</strong> <?php $categories = get_the_category(); 
 								if ( ! empty( $categories ) ) {
 								    echo esc_html( $categories[0]->name );   
 								} ?>
