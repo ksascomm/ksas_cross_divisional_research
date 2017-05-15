@@ -15,6 +15,9 @@ $paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
 			'post_type' => 'profile',
 			'posts_per_page' => '25',
 			'post_status'=>'publish',
+			'meta_key' => 'ecpt_award_alpha',
+			'orderby' => 'meta_value',
+			'order' => 'ASC',
 			'paged' => $paged,
 			'tax_query' => array(
 				array(

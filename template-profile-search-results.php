@@ -58,6 +58,9 @@ $ancestor_url = get_permalink($post->post_parent); ?>
 							'post_type' => 'profile',
 							'posts_per_page' => '25',
 							'post_status'=>'publish',
+							'meta_key' => 'ecpt_award_alpha',
+							'orderby' => 'meta_value',
+							'order' => 'ASC',
 							'paged' => $paged,
 							'tax_query' => array(
 								array(
