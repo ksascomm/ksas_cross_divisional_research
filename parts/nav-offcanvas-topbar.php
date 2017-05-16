@@ -31,8 +31,14 @@
 						</a>
 					</div>
 				</div>
-				<div class="small-12 medium-8 large-9 columns">
+				<div class="small-12 medium-5 large-7 columns">
 					<h1><a href="<?php echo site_url(); ?>"><small><?php echo get_bloginfo ( 'description' ); ?></small><?php echo get_bloginfo( 'title' ); ?></a></h1>
+				</div>
+				<div class="small-12 medium-3 large-2 columns">
+					<form method="GET" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search" id="search-bar">
+	                	<input type="submit" class="icon-search" value="&#xe004;" />
+	                	<input type="text" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="Search this site" aria-label="search"/>
+	                </form>
 				</div>
 			</div>
 		</div>
