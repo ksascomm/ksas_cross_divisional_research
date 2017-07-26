@@ -1,8 +1,4 @@
 <form method="post" action="<?php echo $ancestor_url;?>results/">
-	<input type="text" name="keyword" id="id_search" placeholder="Search by name or keyword"  />
-	<label for="id_search" class="screen-reader-text">
-		Search by name or keyword
-	</label>
 	<div class="row">
 		<div class="medium-5 columns">
 			<label for="id_search" class="screen-reader-text">Search by affiliation</label>

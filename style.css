@@ -5,7 +5,7 @@
  Author:       Tim Gelles
  Author URI:   http://krieger.jhu.edu
  Template:     ksas_cross_divisional
- Version:      1.0.0
+ Version:      1.1.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
@@ -128,7 +128,6 @@ li.person {
 
 .fullscreen-image-slider .orbit-image {
   width: 100%;
-  height: 45vh;
 }
 
 .fullscreen-image-slider .orbit-caption {
@@ -149,4 +148,8 @@ li.person {
 
 .fullscreen-image-slider .orbit-caption > h4 > a {
   color: white;
+}
+
+.button.search {
+  margin-top: 1.5rem;
 }

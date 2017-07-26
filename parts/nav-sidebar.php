@@ -18,12 +18,12 @@
 	if ( $kiddies ) { ?>
 
 		<div class="sidebar">
-			<div class="offset-gutter" id="sidebar_header">
+			<div class="offset-gutter sidenav" id="sidebar_header">
 				<h5 class="grey">Also in 
-				<?php if (is_home()) :?>
-					<a href="<?php echo site_url(); ?>/about" class="white bold">About</a>
+				<?php if (is_home() ) :?>
+					<span class="white">About</span>
 				<?php else : ?>
-					<a href="<?php echo $ancestor_url;?>" class="white bold"><?php echo $ancestor_title; ?></a>
+					<span class="white"><?php echo $ancestor_title; ?></span>
 				<?php endif;?>
 				</h5>
 			</div>
@@ -37,9 +37,9 @@
 
 	<?php } ?>
 	<?php if (is_page(array('results', 'prior-student-projects')) || is_singular('profile')) : ?>
-	<div class="sidebar">
+		<div class="sidebar">
 			<div class="offset-gutter" id="sidebar_header">
-				<h5 class="grey">Also in <a href="<?php echo site_url(); ?>/undergraduate" class="white bold">Current Undergraduate Students</a>
+				<h5 class="grey">Also in <span class="white">Undergraduate Students</span>
 				</h5>
 			</div>
 			<?php wp_nav_menu( array( 

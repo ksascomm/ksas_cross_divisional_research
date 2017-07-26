@@ -1,11 +1,27 @@
 <?php get_header(); ?>
+
 			
 <div id="content">
 
 	<div id="inner-content" class="row">
 
 		<main id="main" class="small-12 large-9 large-push-3 columns" role="main">
-			
+			<?php $categories = get_the_category(); ?>
+			<div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+				<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="<?php echo site_url();?>" itemprop="item" class="home"><span itemprop="name">Home</span></a></span> 
+				<span class="sep">/</span> 
+				<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="<?php echo site_url();?>/undergraduate/" itemprop="item"><span itemprop="name">Undergraduate Students</span></a></span> 
+				<span class="sep">/</span> 
+
+				<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					<a href="<?php echo site_url();?>/undergraduate/<?php echo $categories[0]->slug;?>" itemprop="item">
+					<span itemprop="name"><?php echo $categories[0]->name;?></span></a>
+				</span> 
+				<span class="sep">/</span>
+				<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="<?php echo site_url();?>/undergraduate/<?php echo $categories[0]->slug;?>/prior-student-projects/" itemprop="item"><span itemprop="name">Prior Student Projects</span></a></span> 
+				<span class="sep">/</span> 
+				<span class="current"><?php the_title(); ?></span>
+			</div>
 
 		    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 		
