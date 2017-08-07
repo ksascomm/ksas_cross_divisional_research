@@ -30,74 +30,70 @@
 			</div>		   
 	 	<?php endif; ?>
 
-		<div id="inner-content" class="row">
-
-		    <main id="main" class="small-12 large-8 columns" role="main">
+		<div id="inner-content" class="padding-top-zero">
 
 				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-					<div class="margin10">
-					<?php $frontpagecontent = the_content(); if($frontpagecontent != '') : ?>
-						
-							<?php the_content(); ?>	
-							
-					</div>
-					<?php endif; ?>
-					
+					<div class="home-intro" aria-label="Introduction">
+						<div class="row">
+							<div class="small-12 columns">
+								<h1 class="blue"><?php the_title();?></h1>
+								<?php the_content(); ?>	
+							</div>	
+						</div>	
+					</div>	
 				<?php endwhile; endif; ?>	
 
-			   
-			    <?php  //News Query		
-					$news_query_cond = $theme_option['flagship_sub_news_query_cond'];
-					$news_quantity = $theme_option['flagship_sub_news_quantity']; 
-					if ( false === ( $news_query = get_transient( 'news_mainpage_query' ) ) ) {
-						if ($news_query_cond === 1) {
-							$news_query = new WP_Query(array(
-								'post_type' => 'post',
-								'posts_per_page' => $news_quantity)); 
-						} else {
-							$news_query = new WP_Query(array(
-								'post_type' => 'post',
-								'posts_per_page' => $news_quantity)); 
-						}
-					set_transient( 'news_mainpage_query', $news_query, 2592000 );
-					} 	
-				if ( $news_query->have_posts() ) : ?>
+		    <main id="main" role="main" class="row">
+				
+				
+			
+				<div class="small-12 large-8 columns">
+				   
+				    <?php  //News Query		
+						$news_quantity = $theme_option['flagship_sub_news_quantity']; 
+						if ( false === ( $news_query = get_transient( 'news_mainpage_query' ) ) ) {
+								$news_query = new WP_Query(array(
+									'post_type' => 'post',
+									'posts_per_page' => $news_quantity)); 
+						set_transient( 'news_mainpage_query', $news_query, 2592000 );
+						} 	
+					if ( $news_query->have_posts() ) : ?>
 
-				<div class="news-feed">
+					<div class="news-feed">
 
-					<h3><?php echo $theme_option['flagship_sub_feed_name']; ?></h3>
+						<h3><?php echo $theme_option['flagship_sub_feed_name']; ?></h3>
 
-					<?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
-						
-							<?php get_template_part( 'parts/loop', 'news' ); ?>
+						<?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
 							
-					<?php endwhile; ?>
+								<?php get_template_part( 'parts/loop', 'news' ); ?>
+								
+						<?php endwhile; ?>
 
-					 <div class="row">
-						<h5 class="black">
-							<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">
-								View <?php echo $theme_option['flagship_sub_feed_name']; ?> Archive
-							</a>
-						</h5>
+						 <div class="row">
+							<h5 class="black">
+								<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">
+									View <?php echo $theme_option['flagship_sub_feed_name']; ?> Archive
+								</a>
+							</h5>
+						</div>
 					</div>
-				</div>
-				<?php endif; ?>
-				<?php if ( is_active_sidebar( 'homepage1' ) && is_active_sidebar( 'homepage2' )  ) : ?>
-				    <div class="row" id="hp-buckets">
-				    	<div class="small-6 columns hide-for-print" role="complementary">
-				    		<div class="primary callout">
-				    			<?php dynamic_sidebar('homepage1'); ?>
-				    		</div> 
-						</div>
-						<div class="small-6 columns hide-for-print" role="complementary">
-							<div class="primary callout">
-				    			<?php dynamic_sidebar('homepage2'); ?>
-				    		</div> 
-						</div>
-				    </div>
-				<?php endif;?>
+					<?php endif; ?>
+					<?php if ( is_active_sidebar( 'homepage1' ) && is_active_sidebar( 'homepage2' )  ) : ?>
+					    <div class="row" id="hp-buckets">
+					    	<div class="small-6 columns hide-for-print" role="complementary">
+					    		<div class="primary callout">
+					    			<?php dynamic_sidebar('homepage1'); ?>
+					    		</div> 
+							</div>
+							<div class="small-6 columns hide-for-print" role="complementary">
+								<div class="primary callout">
+					    			<?php dynamic_sidebar('homepage2'); ?>
+					    		</div> 
+							</div>
+					    </div>
+					<?php endif;?>
 
-			</main> <!-- end #main -->	
+				</div>
 
 			
 				<?php if ( is_active_sidebar( 'sidebar1' ) || is_active_sidebar('homepage0')  ) : ?>
@@ -107,7 +103,7 @@
 					</aside>
 				<?php endif; ?>
 
-
+			</main> <!-- end #main -->	
 
 		</div> <!-- end #inner-content -->
 
