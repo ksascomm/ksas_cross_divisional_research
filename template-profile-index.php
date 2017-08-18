@@ -7,18 +7,15 @@ Template Name: Research Profile Index
 global $post; // Setup the global variable $post
 $parent_title = get_the_title( $post->post_parent );
 $ancestor_url = get_permalink($post->post_parent);
-
-$paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
 	if ( false === ( $research_profile_index_query = get_transient( 'research_profile_index_query_' . $paged ) ) ) {
 		// It wasn't there, so regenerate the data and save the transient
 		$research_profile_index_query = new WP_Query(array(
 			'post_type' => 'profile',
-			'posts_per_page' => '8',
+			'posts_per_page' => '-1',
 			'post_status'=>'publish',
 			'meta_key' => 'ecpt_award_alpha',
 			'orderby' => 'meta_value',
 			'order' => 'ASC',
-			'paged' => $paged,
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'category',
@@ -70,7 +67,7 @@ $paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
 											</div>
 											<div class="medium-4 columns">
 												<label for="award" class="screen-reader-text">Select Year</label>
-												<label for="affiliation" class="bold inline">Select Year
+												<label for="award" class="bold inline">Select Year
 												<select id="award" name="award">
 													<option value="">Any Year</option>
 													<?php $award_years = get_meta_values('ecpt_class_year');
@@ -99,11 +96,7 @@ $paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
 						<?php while ($research_profile_index_query->have_posts()) : $research_profile_index_query->the_post(); ?>
 							<?php get_template_part( 'parts/loop', 'indexed-profile' ); ?>
 						<?php endwhile; ?>
-					</ul>	
-					
-					<div class="paged row">
-						<?php flagship_pagination($research_profile_index_query->max_num_pages); ?>		
-					</div>					
+					</ul>					
 				
 			</main> <!-- end #main -->
 		    

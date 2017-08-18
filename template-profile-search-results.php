@@ -56,12 +56,11 @@ $ancestor_url = get_permalink($post->post_parent); ?>
 				
 				$standard_args = array(
 							'post_type' => 'profile',
-							'posts_per_page' => '10',
+							'posts_per_page' => '-1',
 							'post_status'=>'publish',
 							'meta_key' => 'ecpt_award_alpha',
 							'orderby' => 'meta_value',
 							'order' => 'ASC',
-							'paged' => $paged,
 							'tax_query' => array(
 								array(
 									'taxonomy' => 'category',
@@ -74,7 +73,6 @@ $ancestor_url = get_permalink($post->post_parent); ?>
 							);
 				$query_args = array_merge($standard_args, $affiliation_query, $year_query, $keyword_query); 
 
-				$paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
 				$research_search_results_query = new WP_Query($query_args);  	?>
 					
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
@@ -99,7 +97,7 @@ $ancestor_url = get_permalink($post->post_parent); ?>
 								</div>
 								<div class="medium-4 columns">
 									<label for="award" class="screen-reader-text">Select Year</label>
-									<label for="affiliation" class="bold inline">Select Year
+									<label for="award" class="bold inline">Select Year
 									<select id="award" name="award">
 										<option value="">Any Year</option>
 										<?php $award_years = get_meta_values('ecpt_class_year');
@@ -129,17 +127,8 @@ $ancestor_url = get_permalink($post->post_parent); ?>
 				<?php endwhile; ?>
 			<?php else :?>
 				<h2> No Results</h2>
-				<style>
-					.sidenav {display: none;}
-				</style>
 			<?php endif;?>
 				
-			<div class="row">
-				<?php flagship_pagination($research_search_results_query->max_num_pages); ?>		
-			</div>
-	
-
-
 			</main> <!-- end #main -->
 		    
 		    <div class="small-12 large-3 large-pull-9 columns" role="navigation"> 
