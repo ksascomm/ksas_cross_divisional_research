@@ -54,7 +54,6 @@ $paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
 									<form method="post" action="<?php echo $ancestor_url;?>results/">
 										<div class="row">
 											<div class="medium-4 columns">
-												<label for="id_search" class="screen-reader-text">Search by affiliation</label>
 												<label for="affiliation" class="bold inline">Affiliation:
 												<select id="affiliation" name="affiliation" class="inline">
 													<option value="">Any Affiliation</option>
