@@ -59,3 +59,94 @@ function get_meta_values( $key = '', $type = 'profile', $status = 'publish' ) {
     ", $key, $status, $type ) );
     return $r;
 }
+
+// Affiliation taxonomy for research profiles/spotlights
+function register_affiliation_tax() {
+    $labels = array(
+        'name'                  => _x( 'Affiliations', 'taxonomy general name' ),
+        'singular_name'         => _x( 'Affiliation', 'taxonomy singular name' ),
+        'add_new'               => _x( 'Add New Affiliation', 'Affiliation'),
+        'add_new_item'          => __( 'Add New Affiliation' ),
+        'edit_item'             => __( 'Edit Affiliation' ),
+        'new_item'              => __( 'New Affiliation' ),
+        'view_item'             => __( 'View Affiliation' ),
+        'search_items'          => __( 'Search Affiliations' ),
+        'not_found'             => __( 'No Affiliation found' ),
+        'not_found_in_trash'    => __( 'No Affiliation found in Trash' ),
+    );
+    
+    $pages = array('post', 'profile');
+                
+    $args = array(
+        'labels'            => $labels,
+        'singular_label'    => __('Affiliation'),
+        'public'            => true,
+        'show_ui'           => true,
+        'hierarchical'      => true,
+        'show_tagcloud'     => false,
+        'show_in_nav_menus' => false,
+        'rewrite'           => array('slug' => 'affiliation', 'with_front' => false ),
+     );
+    register_taxonomy('affiliation', $pages, $args);
+}
+add_action('init', 'register_affiliation_tax');
+   
+// Prepopulate choices for affiliation taxonomy
+	function check_affiliation_terms(){
+	 
+	        // see if we already have populated any terms
+	    $term = get_terms( 'affiliation', array( 'hide_empty' => false ) );
+	 
+	    // if no terms then lets add our terms
+	    if( empty( $term ) ){
+	        $terms = define_affiliation_terms();
+	        foreach( $terms as $term ){
+	            if( !term_exists( $term['name'], 'affiliation' ) ){
+	                wp_insert_term( $term['name'], 'affiliation', array( 'slug' => $term['slug'] ) );
+	            }
+	        }
+	    }
+	}
+
+	add_action( 'init', 'check_affiliation_terms' );
+
+	function define_affiliation_terms(){
+	 
+	$terms = array(
+	    '0' => array( 'name' => 'Advanced Media Studies','slug' => 'cams'),
+	    '1' => array( 'name' => 'Africana Studies','slug' => 'africana'),
+	    '2' => array( 'name' => 'Archaeology','slug' => 'archaeology'), 
+	    '3' => array( 'name' => 'Behavioral Biology','slug' => 'behavbio'),
+	    '4' => array( 'name' => 'China STEM','slug' => 'chinastem'),
+	    '5' => array( 'name' => 'Dance','slug' => 'dance'),
+	    '6' => array( 'name' => 'Engineering','slug' => 'engineering'),
+	    '7' => array( 'name' => 'East Asian','slug' => 'eastasian'),
+	    '8' => array( 'name' => 'Embryology','slug' => 'embryo'),
+	    '9' => array( 'name' => 'Expository Writing','slug' => 'ewp'),
+	    '10' => array( 'name' => 'Film and Media','slug' => 'film'),
+	    '11' => array( 'name' => 'Financial Economics','slug' => 'cfe'),
+	    '12' => array( 'name' => 'Global Studies','slug' => 'arrighi'),
+	    '13' => array( 'name' => 'International Studies','slug' => 'international'),
+	    '14' => array( 'name' => 'Jewish Studies','slug' => 'jewish'),
+	    '15' => array( 'name' => 'Language Education','slug' => 'cledu'),
+	    '16' => array( 'name' => 'Latin American Studies','slug' => 'plas'),
+	    '17' => array( 'name' => 'Mind Brain Institute','slug' => 'mindbrain'),
+	    '18' => array( 'name' => 'Modern German Thought','slug' => 'maxkade'),
+	    '19' => array( 'name' => 'Museums and Society','slug' => 'museums'),
+	    '20' => array( 'name' => 'Music','slug' => 'music'),
+	    '21' => array( 'name' => 'Neuroscience','slug' => 'neuroscience'),
+	    '22' => array( 'name' => 'Post-Bac Pre-Med','slug' => 'pbpm'),
+	    '23' => array( 'name' => 'Pre-Law','slug' => 'prelaw'),
+	    '24' => array( 'name' => 'Pre-Med','slug' => 'premed'),
+	    '25' => array( 'name' => 'Premodern Europe','slug' => 'singleton'),
+	    '26' => array( 'name' => 'Public Health','slug' => 'publichealth'),
+	    '27' => array( 'name' => 'Quantum Matter','slug' => 'quantum'),
+	    '28' => array( 'name' => 'Social Policy','slug' => 'socialpolicy'),
+	    '29' => array( 'name' => 'Theatre Arts','slug' => 'theatre'),
+	    '30' => array( 'name' => 'Visual Arts','slug' => 'visual'),
+	    '31' => array( 'name' => 'Women Gender and Sexuality','slug' => 'wgs'),
+	    '32' => array( 'name' => 'Writing Center','slug' => 'writingcenter'),
+	    );
+	 
+	    return $terms;
+	}
