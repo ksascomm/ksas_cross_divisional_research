@@ -60,6 +60,67 @@ function get_meta_values( $key = '', $type = 'profile', $status = 'publish' ) {
     return $r;
 }
 
+// Academic Department taxonomy for research profiles/spotlight
+    function register_academicdepartment_tax() {
+        $labels = array(
+            'name'                  => _x( 'Departments', 'taxonomy general name' ),
+            'singular_name'         => _x( 'Department', 'taxonomy singular name' ),
+            'add_new'               => _x( 'Add New Department', 'Department'),
+            'add_new_item'          => __( 'Add New Department' ),
+            'edit_item'             => __( 'Edit Department' ),
+            'new_item'              => __( 'New Department' ),
+            'view_item'             => __( 'View Department' ),
+            'search_items'          => __( 'Search Departments' ),
+            'not_found'             => __( 'No Department found' ),
+            'not_found_in_trash'    => __( 'No Department found in Trash' ),
+        );
+        
+        $pages = array('courses','people','profile','post', 'studyfields', 'deptextra');
+                    
+        $args = array(
+            'labels'            => $labels,
+            'singular_label'    => __('Department'),
+            'public'            => true,
+            'show_ui'           => true,
+            'hierarchical'      => true,
+            'show_tagcloud'     => false,
+            'show_in_nav_menus' => false,
+            'rewrite'           => array('slug' => 'department', 'with_front' => false ),
+         );
+        register_taxonomy('academicdepartment', $pages, $args);
+    }
+    add_action('init', 'register_academicdepartment_tax');
+
+// 2.2 Prepopulate choices for Academic Department taxonomy
+function add_academicdepartment_terms() {
+    wp_insert_term('Advanced Academic Programs', 'academicdepartment',  array('description'=> '','slug' => 'aap'));
+    wp_insert_term('Anthropology', 'academicdepartment',  array('description'=> '','slug' => 'anthropology'));
+    wp_insert_term('Biology', 'academicdepartment',  array('description'=> '','slug' => 'bio'));
+    wp_insert_term('Biophysics', 'academicdepartment',  array('description'=> '','slug' => 'biophysics'));
+    wp_insert_term('Chemistry', 'academicdepartment',  array('description'=> '','slug' => 'chemistry'));
+    wp_insert_term('Classics', 'academicdepartment',  array('description'=> '','slug' => 'classics'));
+    wp_insert_term('Cognitive Science', 'academicdepartment',  array('description'=> '','slug' => 'cogsci'));
+    wp_insert_term('Earth and Planetary Sciences', 'academicdepartment',  array('description'=> '','slug' => 'eps'));
+    wp_insert_term('Economics', 'academicdepartment',  array('description'=> '','slug' => 'econ'));
+    wp_insert_term('English', 'academicdepartment',  array('description'=> '','slug' => 'english'));
+    wp_insert_term('German and Romance Languages', 'academicdepartment',  array('description'=> '','slug' => 'grll'));
+    wp_insert_term('History', 'academicdepartment',  array('description'=> '','slug' => 'history'));
+    wp_insert_term('History of Art', 'academicdepartment',  array('description'=> '','slug' => 'arthist'));
+    wp_insert_term('History of Science and Technology', 'academicdepartment',  array('description'=> '','slug' => 'host'));
+    wp_insert_term('Humanities', 'academicdepartment',  array('description'=> '','slug' => 'humanities'));
+    wp_insert_term('Mathematics', 'academicdepartment',  array('description'=> '','slug' => 'math'));
+    wp_insert_term('Near Eastern Studies', 'academicdepartment',  array('description'=> '','slug' => 'neareast'));
+    wp_insert_term('Philosophy', 'academicdepartment',  array('description'=> '','slug' => 'philosophy'));
+    wp_insert_term('Physics and Astronomy', 'academicdepartment',  array('description'=> '','slug' => 'physics'));
+    wp_insert_term('Political Science', 'academicdepartment',  array('description'=> '','slug' => 'polisci'));
+    wp_insert_term('Psychological and Brain Sciences', 'academicdepartment',  array('description'=> '','slug' => 'pbs'));
+    wp_insert_term('Sociology', 'academicdepartment',  array('description'=> '','slug' => 'soc'));
+    wp_insert_term('Writing Seminars', 'academicdepartment',  array('description'=> '','slug' => 'writing'));
+    wp_insert_term('Whiting School of Engineering', 'academicdepartment',  array('description'=> '','slug' => 'wse'));
+}
+add_action('init', 'add_academicdepartment_terms');
+
+
 // Affiliation taxonomy for research profiles/spotlights
 function register_affiliation_tax() {
     $labels = array(
