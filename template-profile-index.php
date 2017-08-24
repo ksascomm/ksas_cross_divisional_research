@@ -6,10 +6,9 @@ Template Name: Research Profile Index
 <?php get_header();
 global $post; // Setup the global variable $post
 $parent_title = get_the_title( $post->post_parent );
-$ancestor_url = get_permalink($post->post_parent);
-	if ( false === ( $research_profile_index_query = get_transient( 'research_profile_index_query_' . $paged ) ) ) {
+$ancestor_url = get_permalink($post->post_parent); 
 		// It wasn't there, so regenerate the data and save the transient
-		$research_profile_index_query = new WP_Query(array(
+		$research_profiles_index_query = new WP_Query(array(
 			'post_type' => 'profile',
 			'posts_per_page' => '-1',
 			'post_status'=>'publish',
@@ -26,8 +25,6 @@ $ancestor_url = get_permalink($post->post_parent);
 			),
 
 			)); 
-			set_transient( 'research_profile_index_query_' . $parent_title . '_' . $paged, $research_profile_index_query, 2592000 );
-	} 	
 	?>
 
 	<div id="content">
@@ -54,9 +51,9 @@ $ancestor_url = get_permalink($post->post_parent);
 												<label for="affiliation" class="bold inline">Affiliation:
 												<select id="affiliation" name="affiliation" class="inline">
 													<option value="">Any Affiliation</option>
-													<?php $taxonomies = array('academicdepartment', 'affiliation');
-													$terms = get_terms($taxonomies, array(
-																'hide_empty' => 1,
+													<?php $terms = get_terms( array(
+																'taxonomy' => array('academicdepartment', 'affiliation'),
+																'hide_empty' => false,
 													));
 																foreach ( $terms as $term ) {
 																	echo '<option value="' . $term->slug . '">' . $term->name . '</option>';
@@ -93,7 +90,7 @@ $ancestor_url = get_permalink($post->post_parent);
 						
 					<?php endwhile; endif; ?>	
 					<ul id="directory">
-						<?php while ($research_profile_index_query->have_posts()) : $research_profile_index_query->the_post(); ?>
+						<?php while ($research_profiles_index_query->have_posts()) : $research_profiles_index_query->the_post(); ?>
 							<?php get_template_part( 'parts/loop', 'indexed-profile' ); ?>
 						<?php endwhile; ?>
 					</ul>					

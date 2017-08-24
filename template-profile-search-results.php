@@ -85,9 +85,9 @@ $ancestor_url = get_permalink($post->post_parent); ?>
 									<label for="affiliation" class="bold inline">Affiliation:
 									<select id="affiliation" name="affiliation" class="inline">
 										<option value="">Any Affiliation</option>
-										<?php $taxonomies = array('academicdepartment', 'affiliation');
-										$terms = get_terms($taxonomies, array(
-											'hide_empty' => 1,
+											<?php $terms = get_terms( array(
+												'taxonomy' => array('academicdepartment', 'affiliation'),
+												'hide_empty' => false,
 											));
 										foreach ( $terms as $term ) {
 											echo '<option value="' . $term->slug . '">' . $term->name . '</option>';
