@@ -31,17 +31,16 @@
 	 	<?php endif; ?>
 
 		<div id="inner-content" class="padding-top-zero">
-
-				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-					<div class="home-intro" aria-label="Introduction">
-						<div class="row">
-							<div class="small-12 columns">
-								<h1 class="blue"><?php the_title();?></h1>
-								<?php the_content(); ?>	
-							</div>	
+			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+				<div class="home-intro" aria-label="Introduction">
+					<div class="row">
+						<div class="small-12 columns">
+							<h1 class="intro"><?php the_title();?></h1>
+							<?php the_content(); ?>	
 						</div>	
 					</div>	
-				<?php endwhile; endif; ?>	
+				</div>	
+			<?php endwhile; endif; ?>	
 
 		    <main id="main" role="main" class="row">
 				
@@ -61,7 +60,7 @@
 
 					<div class="news-feed">
 
-						<h3><?php echo $theme_option['flagship_sub_feed_name']; ?></h3>
+						<h1 class="feed-title"><?php echo $theme_option['flagship_sub_feed_name']; ?></h1>
 
 						<?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
 							
@@ -72,7 +71,7 @@
 						 <div class="row">
 							<h5 class="black">
 								<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">
-									View <?php echo $theme_option['flagship_sub_feed_name']; ?> Archive
+									View <?php echo $theme_option['flagship_sub_feed_name']; ?> Archive <span class="fa fa-chevron-circle-right" aria-hidden="true"></span>
 								</a>
 							</h5>
 						</div>

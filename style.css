@@ -165,3 +165,8 @@ li.person {
 .padding-top-zero {
   padding-top: 0rem !important;
 }
+
+h1.intro {
+  font-family: "quadon-extrabold", "Helvetica Neue", Roboto, sans-serif;
+  font-weight: 700;
+}
