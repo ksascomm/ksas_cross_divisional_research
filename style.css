@@ -156,8 +156,7 @@ li.person {
 .home-intro {
   font-size: 1.35rem;
   background: #c3dcf5;
-  padding-top: 45px;
-  padding-bottom: 45px;
+
   padding-left: calc(50% - 600px);
   padding-right: calc(50% - 600px);
 }
@@ -169,4 +168,5 @@ li.person {
 h1.intro {
   font-family: "quadon-extrabold", "Helvetica Neue", Roboto, sans-serif;
   font-weight: 700;
+  margin-top: 1rem;
 }
