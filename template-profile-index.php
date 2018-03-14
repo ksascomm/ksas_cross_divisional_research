@@ -7,7 +7,6 @@ Template Name: Research Profile Index
 global $post; // Setup the global variable $post
 $parent_title = get_the_title( $post->post_parent );
 $ancestor_url = get_permalink($post->post_parent); 
-		// It wasn't there, so regenerate the data and save the transient
 		$research_profiles_index_query = new WP_Query(array(
 			'post_type' => 'profile',
 			'posts_per_page' => '-1',
