@@ -1,8 +1,8 @@
 <li class="person">
 	<div class="row">
-		<article class="small-11 columns centered" aria-labelledby="post-<?php the_ID(); ?>">
+		<article class="small-11 columns centered" aria-label="<?php the_title(); ?>: <?php echo strip_tags(get_post_meta($post->ID, 'ecpt_pull_quote', true)); ?>">
 			<h3 class="no-margin">
-			<a id="post-<?php the_ID(); ?>" href="<?php the_permalink();?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+				<a id="post-<?php the_ID(); ?>" href="<?php the_permalink();?>"><?php the_title(); ?></a>
 			</h3>
 			
 			<ul class="menu vertical">

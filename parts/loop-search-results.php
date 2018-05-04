@@ -1,7 +1,7 @@
-<article <?php post_class(''); ?> itemscope itemtype="http://schema.org/BlogPosting" aria-labelledby="post-<?php the_ID(); ?>">
-	<header class="article-header" aria-label="<?php the_title();?>">	
-		<h1 class="entry-title single-title search-result" itemprop="headline">
-			<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+<article <?php post_class(''); ?> aria-label="<?php the_title(); ?>: <?php echo strip_tags(get_post_meta($post->ID, 'ecpt_pull_quote', true)); ?>">
+	<header class="article-header">	
+		<h1 class="entry-title single-title search-result">
+			<a href="<?php the_permalink() ?>">
 				<?php if( 'profile' == get_post_type() ) :?> 
 					Research Profile: <?php the_title(); ?> 
 				<?php else : ?> 
