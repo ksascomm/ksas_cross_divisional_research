@@ -18,7 +18,7 @@
 	if ( $kiddies ) { ?>
 
 		<div class="sidebar">
-			<div class="offset-gutter sidenav" id="sidebar_header">
+			<div class="offset-gutter sidenav" id="sidebar_header" role="navigation" aria-label="Sidebar Menu">
 				<h5 class="grey">Also in 
 				<?php if (is_home() ) :?>
 					<span class="white">About</span>
@@ -38,7 +38,7 @@
 	<?php } ?>
 	<?php if (is_page(array('results', 'prior-student-projects')) || is_singular('profile')) : ?>
 		<div class="sidebar">
-			<div class="offset-gutter" id="sidebar_header">
+			<div class="offset-gutter" id="sidebar_header" role="navigation" aria-label="Sidebar Menu">
 				<h5 class="grey">Also in <span class="white">Undergraduate Students</span>
 				</h5>
 			</div>

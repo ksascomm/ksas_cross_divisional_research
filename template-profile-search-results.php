@@ -131,7 +131,7 @@ $ancestor_url = get_permalink($post->post_parent); ?>
 				
 			</main> <!-- end #main -->
 		    
-		    <div class="small-12 large-3 large-pull-9 columns" role="navigation"> 
+		    <aside class="small-12 large-3 large-pull-9 columns"> 
 				
 				<?php get_template_part( 'parts/nav', 'sidebar' ); ?>
 					
@@ -143,7 +143,7 @@ $ancestor_url = get_permalink($post->post_parent); ?>
 					?>
 					<!-- END Page Specific Sidebar -->
 
-			</div>
+			</aside>
 		
 		</div> <!-- end #inner-content -->
 	
