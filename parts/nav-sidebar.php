@@ -17,7 +17,7 @@
 	}
 	if ( $kiddies ) { ?>
 
-		<div class="sidebar">
+		<div class="sidebar navigation-sidebar">
 			<div class="offset-gutter sidenav" id="sidebar_header" role="navigation" aria-label="Sidebar Menu">
 				<h5 class="grey">Also in 
 				<?php if (is_home() ) :?>
@@ -37,7 +37,7 @@
 
 	<?php } ?>
 	<?php if (is_page(array('results', 'prior-student-projects')) || is_singular('profile')) : ?>
-		<div class="sidebar">
+		<div class="sidebar navigation-sidebar">
 			<div class="offset-gutter" id="sidebar_header" role="navigation" aria-label="Sidebar Menu">
 				<h5 class="grey">Also in <span class="white">Undergraduate Students</span>
 				</h5>
@@ -54,7 +54,7 @@
 
 <?php if ( is_active_sidebar( 'sidebar1' ) ) : ?>
 
-	<div class="sidebar">
+	<div class="sidebar widget-sidebar">
 
 		<?php dynamic_sidebar( 'sidebar1' ); ?>
 		
